@@ -5,10 +5,14 @@ from db.resena_db import ResenaDB
 from fastapi import FastAPI, Depends
 from fastapi import HTTPException
 from routers.router_autor import router as router_autor
+from routers.router_pelicula import router as router_pelicula
+from routers.router_resena import router as router_resena
 
 api = FastAPI()
 
 api.include_router(router_autor)
+api.include_router(router_pelicula)
+api.include_router(router_resena)
 
 
 from fastapi.middleware.cors import CORSMiddleware

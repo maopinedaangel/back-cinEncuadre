@@ -25,6 +25,7 @@ class AutorDB(Base):
     email = Column(String)
     password = Column(String)
     status = Column(Boolean)
+    tipo = Column(String)
 
 Base.metadata.create_all(bind=engine)
 

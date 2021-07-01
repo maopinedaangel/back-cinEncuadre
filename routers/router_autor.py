@@ -28,7 +28,7 @@ async def mostrar_autores():
 '''
 
 
-@router.post("/autor/auth/")
+@router.post("/autor/auth")
 async def auth_autor(autor_in: AutorIn, db: Session = Depends(get_db)):
     autor_in_db = db.query(AutorDB).get(autor_in.username)
 
@@ -41,7 +41,8 @@ async def auth_autor(autor_in: AutorIn, db: Session = Depends(get_db)):
     return {"Autenticado" : True}
 
 
-@router.get("/autor/perfil/{username}", response_model=AutorOut)
+#@router.get("/autor/perfil/{username}", response_model=AutorOut)
+@router.get("/autor/perfil", response_model=AutorOut)
 async def get_perfil(username: str, db: Session = Depends(get_db)):
 
     autor_in_db = db.query(AutorDB).get(username)
@@ -52,3 +53,8 @@ async def get_perfil(username: str, db: Session = Depends(get_db)):
     return autor_in_db
 
 
+
+@router.get("/autores/", response_model=List[AutorOut])
+async def mostrar_autores(db: Session = Depends(get_db)):
+    autores = db.query(AutorDB).all()
+    return autores

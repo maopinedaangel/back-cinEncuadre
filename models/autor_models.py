@@ -9,6 +9,8 @@ class AutorOut(BaseModel):
     nombre: str
     apellido: str
     perfil: str
+    foto: str
+    tipo: str
 
     class Config:
         orm_mode = True
