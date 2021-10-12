@@ -18,7 +18,7 @@ api.include_router(router_resena)
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-    "http://localhost:8080",
+    "http://localhost:8080", "https://cinencuadre.herokuapp.com"
 ]
 
 api.add_middleware(
